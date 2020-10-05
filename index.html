@@ -6,11 +6,31 @@
     </head>
     <body>
         <div id = "computed_props">
-            FirstName : <input type = "text" v-model = "firstname" /> <br/><br/>
-            LastName : <input type = "text" v-model = "lastname"/> <br/><br/>
-            <h1>My name is {{firstname}} {{lastname}}</h1>
-            <h1>Using computed method : {{getfullname}}</h1>
+            Kilometers : <input type = "text" v-model = "kilometers">
+            Meters : <input type = "text" v-model = "meters">
         </div>
-        <script type = "text/javascript" src = "js/vue_computedprops.js"></script>
+        <script type = "text/javascript">
+            var vm = new Vue({
+                el: '#computed_props',
+                data: {
+                    kilometers: 0,
+                    meters: 0
+                },
+                methods: {
+                },
+                computed: {
+                },
+                watch: {
+                    kilometers: function(val) {
+                        this.kilometers = val;
+                        this.meters = val * 1000;
+                    },
+                    meters: function (val) {
+                        this.kilometers = val / 1000;
+                        this.meters = val;
+                    }
+                }
+            });
+         </script>
      </body>
 </html>
