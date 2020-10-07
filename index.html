@@ -6,43 +6,43 @@
     </head>
     <body>
         <div id = "databinding">
-            <span style = "font-size:25px;">Enter Age:</span> <input v-model.number = "age" type = "number">
-            <br/>
-            <span style = "font-size:25px;">Enter Message:</span> <input v-model.lazy = "msg">
-            <h3>Display Message : {{msg}}</h3>
-            <br/>
-            <span style = "font-size:25px;">Enter Message : </span><input v-model.trim = "message">
-            <h3>Display Message : {{message}}</h3>
-        </div>
-        <div id = "databinding">
-            <h3>Radio</h3>
-            <input type = "radio" id = "black" value = "Black" v-model = "picked">Black
-            <input type = "radio" id = "white" value = "White" v-model = "picked">White
-            <h3>Radio element clicked : {{picked}} </h3>
-            <hr/>
-            <h3>Select</h3>
-            <select v-model = "languages">
-                <option disabled value = "">Please select one</option>
-                <option>Java</option>
-                <option>Javascript</option>
-                <option>Php</option>
-                <option>C</option>
-                <option>C++</option>
-            </select>
-            <h3>Languages Selected is : {{ languages }}</h3>
-            <hr/>
+            <div id = "counter-event-example">
+                <p style = "font-size:25px;">Language displayed : <b>{{ languageclicked }}</b></p>
+                <button-counter
+                v-for = "(item, index) in languages"
+                v-bind:item = "item"
+                v-bind:index = "index"
+                v-on:showlanguage = "languagedisp"></button-counter>
+            </div>
         </div>
         <script type = "text/javascript">
+            Vue.component('button-counter', {
+                template: '<button v-on:click = "displayLanguage(item)"><span style = "font-size:25px;">{{ item }}</span></button>',
+                data: function () {
+                    return {
+                        counter: 0
+                    }
+                },
+                props:['item'],
+                methods: {
+                    displayLanguage: function (lng) {
+                        console.log(lng);
+                        this.$emit('showlanguage', lng);
+                    }
+                },
+            });
             var vm = new Vue({
                 el: '#databinding',
                 data: {
-                    age : 0,
-                    msg: '',
-                    message : '',
-                    picked : 'White',
-                    languages : "Java"
+                    languageclicked: "",
+                    languages : ["Java", "PHP", "C++", "C", "Javascript", "C#", "Python", "HTML"]
+                },
+                methods: {
+                    languagedisp: function (a) {
+                        this.languageclicked = a;
+                    }
                 }
-            });
+            })
         </script>
      </body>
 </html>
