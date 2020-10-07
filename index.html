@@ -5,31 +5,43 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
     <body>
+        <style>
+            .fade-enter-active, .fade-leave-active {
+                transition: opacity 2s
+            }
+            .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+                opacity: 0
+            }
+            .shiftx-enter-active, .shiftx-leave-active {
+                transition: all 2s ease-in-out;
+            }
+            .shiftx-enter, .shiftx-leave-to /* .fade-leave-active below version 2.1.8 */ {
+                transform :  translateX(100px);
+            }
+        </style>
         <div id = "databinding">
-            <input type = "text" v-on:keyup.enter = "showinputvalue"
-                v-bind:style = "styleobj" placeholder = "Enter Fruits Names"/>
-            <h1 v-if = "items.length>0">Display Fruits Name</h1>
-            <ul>
-                <li v-for = "a in items">{{a}}</li>
-            </ul>
+            <button v-on:click = "show = !show">Click Me</button>
+            <transition name = "fade">
+                <p v-show = "show" v-bind:style = "styleobj">Animation Example</p>
+            </transition>
+            <transition name = "shiftx">
+                <p v-show = "!show">
+                    <img src = "https://cdn2.thecatapi.com/images/MTU1MTM1Mg.jpg" style = "width:100px;height:100px;" />
+                </p>
+            </transition>
         </div>
         <script type = "text/javascript">
             var vm = new Vue({
                 el: '#databinding',
                 data: {
-                    items:[],
+                    show: true,
                     styleobj: {
-                        width: "30%",
-                        padding: "12px 20px",
-                        margin: "8px 0",
-                        boxSizing: "border-box"
+                        fontSize:'30px',
+                        color:'red'
                     }
                 },
-                methods : {
-                    showinputvalue : function(event) {
-                        this.items.push(event.target.value);
-                    }
-                },
+                methods: {
+                }
             });
         </script>
      </body>
