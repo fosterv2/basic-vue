@@ -5,44 +5,44 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
     <body>
-        <style>
-            .info {
-                color: #00529B;
-                background-color: #BDE5F8;
-            }
-            div {
-                margin: 10px 0;
-                padding: 12px;
-                font-size : 25px;
-            }
-            .active {
-                color: #4F8A10;
-                background-color: #DFF2BF;
-            }
-            .displayError{
-                color: #D8000C;
-                background-color: #FFBABA;
-            }
-         </style>
-         <div id = "classbinding">
-            <new_component v-bind:class = "{active:isActive}"></new_component>
-         </div>
-         <script type = "text/javascript">
+        <div id = "databinding">
+            <span style = "font-size:25px;">Enter Age:</span> <input v-model.number = "age" type = "number">
+            <br/>
+            <span style = "font-size:25px;">Enter Message:</span> <input v-model.lazy = "msg">
+            <h3>Display Message : {{msg}}</h3>
+            <br/>
+            <span style = "font-size:25px;">Enter Message : </span><input v-model.trim = "message">
+            <h3>Display Message : {{message}}</h3>
+        </div>
+        <div id = "databinding">
+            <h3>Radio</h3>
+            <input type = "radio" id = "black" value = "Black" v-model = "picked">Black
+            <input type = "radio" id = "white" value = "White" v-model = "picked">White
+            <h3>Radio element clicked : {{picked}} </h3>
+            <hr/>
+            <h3>Select</h3>
+            <select v-model = "languages">
+                <option disabled value = "">Please select one</option>
+                <option>Java</option>
+                <option>Javascript</option>
+                <option>Php</option>
+                <option>C</option>
+                <option>C++</option>
+            </select>
+            <h3>Languages Selected is : {{ languages }}</h3>
+            <hr/>
+        </div>
+        <script type = "text/javascript">
             var vm = new Vue({
-                el: '#classbinding',
+                el: '#databinding',
                 data: {
-                    title : "This is class binding example",
-                    infoclass : 'info',
-                    errorclass : 'displayError',
-                    isActive : false,
-                    haserror : true
-                },
-                components:{
-                    'new_component' : {
-                        template : '<div class = "info">Class Binding for component</div>'
-                    }
+                    age : 0,
+                    msg: '',
+                    message : '',
+                    picked : 'White',
+                    languages : "Java"
                 }
             });
-         </script>
+        </script>
      </body>
 </html>
