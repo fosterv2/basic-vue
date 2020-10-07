@@ -6,43 +6,74 @@
     </head>
     <body>
         <style>
-            .fade-enter-active, .fade-leave-active {
-                transition: opacity 2s
+            .shiftx-enter-active {
+                animation: shift-in 2s;
             }
-            .fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
-                opacity: 0
+            .shiftx-leave-active {
+                animation: shift-in 2s reverse;
             }
-            .shiftx-enter-active, .shiftx-leave-active {
-                transition: all 2s ease-in-out;
-            }
-            .shiftx-enter, .shiftx-leave-to /* .fade-leave-active below version 2.1.8 */ {
-                transform :  translateX(100px);
+            @keyframes shift-in {
+                0%   {transform:rotateX(0deg);}
+                25%  {transform:rotateX(90deg);}
+                50%  {transform:rotateX(120deg);}
+                75%  {transform:rotateX(180deg);}
+                100% {transform:rotateX(360deg);}
             }
         </style>
+        <script src = "https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
         <div id = "databinding">
             <button v-on:click = "show = !show">Click Me</button>
-            <transition name = "fade">
-                <p v-show = "show" v-bind:style = "styleobj">Animation Example</p>
-            </transition>
             <transition name = "shiftx">
-                <p v-show = "!show">
-                    <img src = "https://cdn2.thecatapi.com/images/MTU1MTM1Mg.jpg" style = "width:100px;height:100px;" />
+                <p v-show = "show">
+                    <img src = "https://cdn2.thecatapi.com/images/MTU1MTM1Mg.jpg" style = "width:200px;height:150px;" />
                 </p>
+            </transition>
+        </div>
+        <div id = "example-4">
+            <button @click = "show = !show">
+                <span style = "font-size:25px;">Toggle</span>
+            </button>
+            <transition  v-on:before-enter = "beforeEnter"
+                v-on:enter = "enter"
+                v-on:leave = "leave"
+                v-bind:css = "false">
+                <p v-if = "show" style = "font-size:25px;">Animation Example with velocity</p>
             </transition>
         </div>
         <script type = "text/javascript">
             var vm = new Vue({
                 el: '#databinding',
                 data: {
-                    show: true,
-                    styleobj: {
-                        fontSize:'30px',
-                        color:'red'
-                    }
+                    show:true
+                },
+                methods : {
+                }
+            });
+            var vm = new Vue({
+                el: '#example-4',
+                data: {
+                    show: false
                 },
                 methods: {
+                    beforeEnter: function (el) {
+                        el.style.opacity = 0
+                    },
+                    enter: function (el, done) {
+                        Velocity(el, { opacity: 1, fontSize: '25px' }, { duration: 1000 })
+                        Velocity(el, { fontSize: '10px' }, { complete: done })
+                    },
+                    leave: function (el, done) {
+                        Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 1500 })
+                        Velocity(el, { rotateZ: '100deg' }, { loop: 2 })
+                        Velocity(el, {
+                            rotateZ: '45deg',
+                            translateY: '30px',
+                            translateX: '30px',
+                            opacity: 0
+                        }, { complete: done })
+                    }
                 }
             });
         </script>
-     </body>
+    </body>
 </html>
