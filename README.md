@@ -1,3 +1,3 @@
 # basic-vue
 
-A place for me to practice VueJs usinf a tutorial
+A place for me to practice VueJs following a tutorial
