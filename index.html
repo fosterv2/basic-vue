@@ -6,25 +6,21 @@
     </head>
     <body>
         <div id = "databinding">
-            <div v-changestyle = "{color:'green'}">VueJS Directive</div>
-      </div>
-      <script type = "text/javascript">
-         Vue.directive("changestyle",{
-            bind(e1,binding, vnode) {
-               console.log(e1);
-               console.log(binding.value.color);
-               console.log(vnode);
-               e1.style.color=binding.value.color;
-               e1.style.fontSize = "30px";
-            }
-         });
-         var vm = new Vue({
-            el: '#databinding',
-            data: {
-            },
-            methods : {
-            },
-         });
-         </script>
+            <input  v-model = "name" placeholder = "Enter Name" /><br/>
+            <span style = "font-size:25px;"><b>Character count is : {{ name | countcharacters }}</b></span>
+        </div>
+        <script type = "text/javascript">
+            var vm = new Vue({
+                el: '#databinding',
+                data: {
+                    name: ""
+                },
+                filters: {
+                    countcharacters: function(value) {
+                        return value.length;
+                    }
+                }
+            });
+        </script>
     </body>
 </html>
