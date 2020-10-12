@@ -5,32 +5,24 @@
         <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     </head>
     <body>
-        <div id = "component_test">
-            <testcomponent :elementtype = " 'div, red, 25, div1' ">Hello Jai</testcomponent>
-            <testcomponent :elementtype = " 'h3, green, 25, h3tag' ">Hello Roy</testcomponent>
-            <testcomponent :elementtype = " 'p, blue, 25, ptag' ">Hello Ria</testcomponent>
-            <testcomponent :elementtype = " 'div, green, 25, divtag' ">Hello Ben</testcomponent>
+        <div id = "app">
+            <p style = "font-size:25px;">Counter: {{ products.id }}</p>
+            <button @click = "products.id++" style = "font-size:25px;">Click Me</button>
         </div>
         <script type = "text/javascript">
-            Vue.component('testcomponent',{
-                render: function(createElement) {
-                    var a = this.elementtype.split(",");
-                    return createElement(a[0], {
-                        attrs: {
-                            id: a[3],
-                            style: "color:" + a[1] + "; font-size:" + a[2] + ";"
-                        }
-                    }, this.$slots.default)
-                },
-                props:{
-                    elementtype: {
-                        attributes: String,
-                        required: true
-                    }
+            var myproduct = {"id": 1, name: "book", "price": "20.00"};
+            var vm = new Vue({
+                el: '#app',
+                data: {
+                    counter: 1,
+                    products: myproduct
                 }
             });
-            var vm = new Vue({
-                el: '#component_test'
+            Vue.set(myproduct, 'qty', 1);
+            Vue.delete(myproduct, 'price');
+            console.log(vm);
+            vm.$watch('counter', function(nval, oval) {
+                alert('Counter is incremented :' + oval + ' to ' + nval + '!');
             });
         </script>
     </body>
