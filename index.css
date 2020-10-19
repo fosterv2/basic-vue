@@ -6,4 +6,5 @@ html, body {
 div {
     border-bottom: 2px solid grey;
     margin-bottom: 10px;
+    padding: 2px;
 }
