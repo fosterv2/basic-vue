@@ -2,3 +2,8 @@ html, body {
     margin: 5px;
     padding: 0;
 }
+
+div {
+    border-bottom: 2px solid grey;
+    margin-bottom: 10px;
+}
