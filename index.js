@@ -1,87 +1,31 @@
-new Vue({
+var text = new Vue({
+  el: "#text",
   data: {
-    a: 1
-  },
-  created: function () {
-    // `this` points to the vm instance
-    console.log('a is: ' + this.a)
+    msg: "I'm a message!"
   }
 })
 
-var obj = {
-  foo: 'bar'
-}
-
-Object.freeze(obj)
-
-var bar = new Vue({
-  el: '#bar',
-  data: obj
-})
-
-var app = new Vue({ 
-  el: '#app',
+var html = new Vue({
+  el: "#html",
   data: {
-    message: 'Hello Vue!'
-  }
-});
-
-var app2 = new Vue({
-  el: '#app-2',
-  data: {
-    message: 'You loaded this page on ' + new Date().toLocaleString()
+    rawHtml: '<span style="color: red">This should be red</span>'
   }
 })
 
-var app3 = new Vue({
-  el: '#app-3',
+var attr = new Vue({
+  el: "#attr",
   data: {
-    seen: true
+    dynamicId: "dynamic",
+    isButtonDisabled: true
   }
 })
 
-var app4 = new Vue({
-  el: '#app-4',
+var js = new Vue({
+  el: "#js",
   data: {
-    todos: [
-      { text: 'Learn JavaScript' },
-      { text: 'Learn Vue' },
-      { text: 'Build something awesome' }
-    ]
-  }
-})
-
-var app5 = new Vue({
-  el: '#app-5',
-  data: {
-    message: 'Hello Vue.js!'
-  },
-  methods: {
-    reverseMessage: function () {
-      this.message = this.message.split('').reverse().join('')
-    }
-  }
-})
-
-var app6 = new Vue({
-  el: '#app-6',
-  data: {
-    message: 'Hello Vue!'
-  }
-})
-
-Vue.component('todo-item', {
-  props: ['todo'],
-  template: '<li>{{ todo.text }}</li>'
-})
-
-var app7 = new Vue({
-  el: '#app-7',
-  data: {
-    groceryList: [
-      { id: 0, text: 'Vegetables' },
-      { id: 1, text: 'Cheese' },
-      { id: 2, text: 'Whatever else humans are supposed to eat' }
-    ]
+    number: 5,
+    ok: false,
+    message: "Not a palindrome",
+    id: 2
   }
 })

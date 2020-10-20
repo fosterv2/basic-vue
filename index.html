@@ -5,53 +5,26 @@
   </head>
   <body>
 
-    <div id="app">
-      {{ message }}
+    <div id="text">
+      <p>Message: {{ msg }}</p>
+      <p v-once>This will never change: {{ msg }}</p>
     </div>
 
-    <div id="app-2">
-      <span v-bind:title="message">
-        Hover your mouse over me for a few seconds
-        to see my dynamically bound title!
-      </span>
+    <div id="html">
+      <p>Using mustaches: {{ rawHtml }}</p>
+      <p>Using v-html directive: <span v-html="rawHtml"></span></p>
     </div>
 
-    <div id="app-3">
-      <span v-if="seen">Now you see me</span>
+    <div id="attr">
+      <p v-bind:id="dynamicId">I have a dynamic id</p>
+      <button v-bind:disabled="isButtonDisabled">Button</button>
     </div>
 
-    <div id="app-4">
-      <ol>
-        <li v-for="todo in todos">
-          {{ todo.text }}
-        </li>
-      </ol>
-    </div>
-
-    <div id="app-5">
-      <p>{{ message }}</p>
-      <button v-on:click="reverseMessage">Reverse Message</button>
-    </div>
-
-    <div id="app-6">
-      <p>{{ message }}</p>
-      <input v-model="message">
-    </div>
-
-    <div id="app-7">
-      <ol>
-        <todo-item
-          v-for="item in groceryList"
-          v-bind:todo="item"
-          v-bind:key="item.id"
-        ></todo-item>
-      </ol>
-    </div>
-
-    <div id="bar">
-      <p>{{ foo }}</p>
-      <!-- this will no longer update `foo`! -->
-      <button v-on:click="foo = 'baz'">Change it</button>
+    <div id="js">
+      <p>{{ number + 1 }}</p>
+      <p>{{ ok ? 'YES' : 'NO' }}</p>
+      <p>{{ message.split('').reverse().join('') }}</p>
+      <p v-bind:id="'list-' + id">List</p>
     </div>
         
     <script src="index.js"></script>
