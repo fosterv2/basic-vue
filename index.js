@@ -1,31 +1,36 @@
-var text = new Vue({
-  el: "#text",
+var iff = new Vue({
+  el: "#iff",
   data: {
-    msg: "I'm a message!"
-  }
-})
-
-var html = new Vue({
-  el: "#html",
-  data: {
-    rawHtml: '<span style="color: red">This should be red</span>'
+    seen: true,
+    unseen: false
   }
 })
 
 var attr = new Vue({
   el: "#attr",
   data: {
-    dynamicId: "dynamic",
-    isButtonDisabled: true
+    url: "https://vuejs.org/",
+    doSomething: function () {
+      iff.seen = !iff.seen
+      iff.unseen = !iff.unseen
+    }
   }
 })
 
-var js = new Vue({
-  el: "#js",
+var dynamic = new Vue({
+  el: "#dynamic",
   data: {
-    number: 5,
-    ok: false,
-    message: "Not a palindrome",
-    id: 2
+    url: "https://vuejs.org/",
+    attributeName: "href",
+    attribute: "href"
+  }
+})
+
+var modifier = new Vue({
+  el: "#modifier",
+  data: {
+    onSubmit: function (e) {
+      console.log(e)
+    }
   }
 })

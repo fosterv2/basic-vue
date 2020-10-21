@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div id="text">
+      <p>Message: {{ msg }}</p>
+      <p v-once>This will never change: {{ msg }}</p>
+    </div>
+
+    <div id="html">
+      <p>Using mustaches: {{ rawHtml }}</p>
+      <p>Using v-html directive: <span v-html="rawHtml"></span></p>
+    </div>
+
+    <div id="attr">
+      <p v-bind:id="dynamicId">I have a dynamic id</p>
+      <button v-bind:disabled="isButtonDisabled">Button</button>
+    </div>
+
+    <div id="js">
+      <p>{{ number + 1 }}</p>
+      <p>{{ ok ? 'YES' : 'NO' }}</p>
+      <p>{{ message.split('').reverse().join('') }}</p>
+      <p v-bind:id="'list-' + id">List</p>
+    </div>
+        
+    <script src="index.js"></script>
+  </body>
+</html>
