@@ -6,31 +6,21 @@ var iff = new Vue({
   }
 })
 
-var attr = new Vue({
-  el: "#attr",
+var bind = new Vue({
+  el: "#bind",
   data: {
     url: "https://vuejs.org/",
+    key: "href"
+  }
+})
+
+var on = new Vue({
+  el: "#on",
+  data: {
+    key: "click",
     doSomething: function () {
       iff.seen = !iff.seen
       iff.unseen = !iff.unseen
-    }
-  }
-})
-
-var dynamic = new Vue({
-  el: "#dynamic",
-  data: {
-    url: "https://vuejs.org/",
-    attributeName: "href",
-    attribute: "href"
-  }
-})
-
-var modifier = new Vue({
-  el: "#modifier",
-  data: {
-    onSubmit: function (e) {
-      console.log(e)
     }
   }
 })

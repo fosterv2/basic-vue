@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div id="iff">
+      <p v-if="seen">Now you see me</p>
+      <p v-if="unseen">You don't see me</p>
+    </div>
+
+    <div id="attr">
+      <p><a v-bind:href="url">Vue.js</a></p>
+      <button v-on:click="doSomething">Click me</button>
+    </div>
+
+    <div id="dynamic">
+      <p><a v-bind:[attributeName]="url">Bad Vue.js</a></p>
+      <p><a v-bind:[attribute]="url">Good Vue.js</a></p>
+    </div>
+
+    <div id="modifier">
+      <form v-on:submit.prevent="onSubmit">
+        <label>Input Name</label><input type="text"><br/>
+        <input type="submit">
+      </form>
+    </div>
+        
+    <script src="../js/directive.js"></script>
+  </body>
+</html>
