@@ -1,0 +1,27 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div id="iff">
+      <p v-if="seen">Now you see me</p>
+      <p v-if="unseen">You don't see me</p>
+    </div>
+
+    <div id="bind">
+      <p><a v-bind:href="url">Full Syntax</a></p>
+      <p><a :href="url">Shorthand</a></p>
+      <p><a :[key]="url">Shorthand With Dynamic</a></p>
+    </div>
+
+    <div id="on">
+      <button v-on:click="doSomething">Full Syntax</button>
+      <button @click="doSomething">Shorthand</button>
+      <button @[key]="doSomething">Shorthand With Dynamic</button>
+    </div>
+        
+    <script src="../js/shorthand.js"></script>
+  </body>
+</html>
