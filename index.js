@@ -1,52 +1,31 @@
-var vm = new Vue({
-  el: '#example',
+var object = new Vue({
+  el: "#object",
   data: {
-    message: 'Hello'
+    isActive: true,
+    hasError: false
+  }
+})
+
+var computed = new Vue({
+  el: "#computed",
+  data: {
+    isActive: true,
+    error: null
   },
   computed: {
-    // a computed getter
-    reversedMessage: function () {
-      // `this` points to the vm instance
-      return this.message.split('').reverse().join('')
+    classObject: function () {
+      return {
+        active: this.isActive && !this.error,
+        'text-danger': this.error && this.error.type === 'fatal'
+      }
     }
   }
 })
-//        BAD
-// var vm = new Vue({
-//   el: '#demo',
-//   data: {
-//     firstName: 'Foo',
-//     lastName: 'Bar',
-//     fullName: 'Foo Bar'
-//   },
-//   watch: {
-//     firstName: function (val) {
-//       this.fullName = val + ' ' + this.lastName
-//     },
-//     lastName: function (val) {
-//       this.fullName = this.firstName + ' ' + val
-//     }
-//   }
-// })
 
-var vm = new Vue({
-  el: '#demo',
+var array = new Vue({
+  el: "#array",
   data: {
-    firstName: 'Foo',
-    lastName: 'Bar'
-  },
-  computed: {
-    fullName: {
-      // getter
-      get: function () {
-        return this.firstName + ' ' + this.lastName
-      },
-      // setter
-      set: function (newValue) {
-        var names = newValue.split(' ')
-        this.firstName = names[0]
-        this.lastName = names[names.length - 1]
-      }
-    }
+    activeClass: 'active',
+    errorClass: 'text-danger'
   }
 })
