@@ -5,53 +5,38 @@
   </head>
   <body>
 
-    <div id="iff">
-      <h1 v-if="awesome">Vue is awesome!</h1>
-      <h1 v-else>Oh no 😢</h1>
+    <div id="example-1">
+      <ul>
+        <li v-for="item in items">
+          {{ item.message }}
+        </li>
+      </ul>
+      <ul>
+        <li v-for="(item, index) in items">
+          {{ parentMessage }} - {{ index }} - {{ item.message }}
+        </li>
+      </ul>
     </div>
 
-    <div id="template">
-      <template v-if="ok">
-        <h1>Title</h1>
-        <p>Paragraph 1</p>
-        <p>Paragraph 2</p>
-      </template>
+    <div id="object">
+      <ul>
+        <li v-for="value in object">
+          {{ value }}
+        </li>
+      </ul>
+      <ul>
+        <li v-for="(value, name, index) in object">
+          {{index}}. {{name}}: {{ value }}
+        </li>
+      </ul>
     </div>
 
-    <div id="else">
-      <p v-if="random">
-        Now you see me
-      </p>
-      <p v-else>
-        Now you don't
-      </p>
-    </div>
-
-    <div id="elsif">
-      <p v-if="type === 'A'">
-        A
-      </p>
-      <p v-else-if="type === 'B'">
-        B
-      </p>
-      <p v-else-if="type === 'C'">
-        C
-      </p>
-      <p v-else>
-        Not A/B/C
-      </p>
-    </div>
-
-    <div id="login">
-      <template v-if="loginType">
-        <label>Username</label>
-        <input placeholder="Enter your username" key="username-input">
-      </template>
-      <template v-else>
-        <label>Email</label>
-        <input placeholder="Enter your email address" key="email-input">
-      </template><br />
-      <button v-on:click="toggle">Toggle login type</button>
+    <div id="key">
+      <ul>
+        <li v-for="item in list" v-bind:key="item.id">
+          {{ item.data }}
+        </li>
+      </ul>
     </div>
         
     <script src="index.js"></script>

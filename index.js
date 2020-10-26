@@ -1,38 +1,32 @@
-var iff = new Vue({
-  el: "#iff",
+var example1 = new Vue({
+  el: '#example-1',
   data: {
-    awesome: false
+    parentMessage: 'Parent',
+    items: [
+      { message: 'Foo' },
+      { message: 'Bar' }
+    ]
   }
 })
 
-var template = new Vue({
-  el: "#template",
+var object = new Vue({
+  el: '#object',
   data: {
-    ok: true
-  }
-})
-
-var els = new Vue({
-  el: "#else",
-  data: {
-    random: Math.random() > 0.5
-  }
-})
-
-var array = ["A", "B", "C", "D", "E"]
-var elsif = new Vue({
-  el: "#elsif",
-  data: {
-    type: array[Math.floor(Math.random() * array.length)]
-  }
-})
-
-var login = new Vue({
-  el: "#login",
-  data: {
-    loginType: true,
-    toggle: function () {
-      login.loginType = !login.loginType
+    object: {
+      title: 'How to do lists in Vue',
+      author: 'Jane Doe',
+      publishedAt: '2016-04-10'
     }
+  }
+})
+
+var key = new Vue({
+  el: '#key',
+  data: {
+    list: [
+      { id: 1, data: "Fizz" },
+      { id: 2, data: "Buzz" },
+      { id: 3, data: "FuzzBuzz" }
+    ]
   }
 })
