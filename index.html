@@ -1,42 +1,46 @@
 <html>
   <head>
+    <title>Vue.js Tutorial</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
   </head>
   <body>
 
-    <div id="example-1">
+    <div id="filter">
       <ul>
-        <li v-for="item in items">
-          {{ item.message }}
-        </li>
+        <li v-for="fruit in longFruit">{{ fruit }}</li>
       </ul>
-      <ul>
-        <li v-for="(item, index) in items">
-          {{ parentMessage }} - {{ index }} - {{ item.message }}
-        </li>
+      <ul v-for="set in sets">
+        <li v-for="n in even(set)">{{ n }}</li>
       </ul>
     </div>
 
-    <div id="object">
+    <!-- Doesn't work -->
+    <!-- <div id="range">
+      <span v-for="n in 10">{{ n }} </span>
+    </div> -->
+
+    <div id="template">
       <ul>
-        <li v-for="value in object">
-          {{ value }}
-        </li>
-      </ul>
-      <ul>
-        <li v-for="(value, name, index) in object">
-          {{index}}. {{name}}: {{ value }}
-        </li>
+        <template v-for="item in items">
+          <li>{{ item.msg }}</li>
+          <li class="divider" role="presentation"></li>
+        </template>
       </ul>
     </div>
 
-    <div id="key">
+    <div id="if-for">
       <ul>
-        <li v-for="item in list" v-bind:key="item.id">
-          {{ item.data }}
+        <li v-for="todo in todos" v-if="!todo.isComplete">
+          {{ todo.td }}
         </li>
       </ul>
+      <ul v-if="todos.length">
+        <li v-for="todo in todos">
+          {{ todo.td }}
+        </li>
+      </ul>
+      <p v-else>No todos left!</p>
     </div>
         
     <script src="index.js"></script>
