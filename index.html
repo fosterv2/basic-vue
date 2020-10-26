@@ -5,20 +5,13 @@
   </head>
   <body>
 
-    <div
-      id="object"
-      class="static"
-      v-bind:class="{ active: isActive, 'text-danger': hasError }"
-    >
-      <p>I have multiple classes</p>
+    <div id="object">
+      <p v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">I have a style object</p>
+      <p v-bind:style="styleObject">I have a reference to a style object</p>
     </div>
 
-    <div id="computed" v-bind:class="classObject">
-      <p>I have multiple classes using a computed property</p>
-    </div>
-
-    <div id="array" v-bind:class="[activeClass, errorClass]">
-      <p>I have multiple classes using an array</p>
+    <div id="array" v-bind:style="[baseStyles, styleObject]">
+      <p>I have multiple style objects using an array</p>
     </div>
         
     <script src="index.js"></script>

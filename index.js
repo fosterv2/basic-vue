@@ -1,23 +1,11 @@
 var object = new Vue({
   el: "#object",
   data: {
-    isActive: true,
-    hasError: false
-  }
-})
-
-var computed = new Vue({
-  el: "#computed",
-  data: {
-    isActive: true,
-    error: null
-  },
-  computed: {
-    classObject: function () {
-      return {
-        active: this.isActive && !this.error,
-        'text-danger': this.error && this.error.type === 'fatal'
-      }
+    activeColor: 'red',
+    fontSize: 30,
+    styleObject: {
+      color: 'red',
+      fontSize: '13px'
     }
   }
 })
@@ -25,7 +13,12 @@ var computed = new Vue({
 var array = new Vue({
   el: "#array",
   data: {
-    activeClass: 'active',
-    errorClass: 'text-danger'
+    styleObject: {
+      color: 'green',
+      fontSize: '23px'
+    },
+    baseStyles: {
+      backgroundColor: 'wheat'
+    }
   }
 })

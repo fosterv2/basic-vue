@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div
+      id="object"
+      class="static"
+      v-bind:class="{ active: isActive, 'text-danger': hasError }"
+    >
+      <p>I have multiple classes</p>
+    </div>
+
+    <div id="computed" v-bind:class="classObject">
+      <p>I have multiple classes using a computed property</p>
+    </div>
+
+    <div id="array" v-bind:class="[activeClass, errorClass]">
+      <p>I have multiple classes using an array</p>
+    </div>
+        
+    <script src="../js/html.js"></script>
+  </body>
+</html>
