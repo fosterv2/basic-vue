@@ -5,13 +5,53 @@
   </head>
   <body>
 
-    <div id="object">
-      <p v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">I have a style object</p>
-      <p v-bind:style="styleObject">I have a reference to a style object</p>
+    <div id="iff">
+      <h1 v-if="awesome">Vue is awesome!</h1>
+      <h1 v-else>Oh no 😢</h1>
     </div>
 
-    <div id="array" v-bind:style="[baseStyles, styleObject]">
-      <p>I have multiple style objects using an array</p>
+    <div id="template">
+      <template v-if="ok">
+        <h1>Title</h1>
+        <p>Paragraph 1</p>
+        <p>Paragraph 2</p>
+      </template>
+    </div>
+
+    <div id="else">
+      <p v-if="random">
+        Now you see me
+      </p>
+      <p v-else>
+        Now you don't
+      </p>
+    </div>
+
+    <div id="elsif">
+      <p v-if="type === 'A'">
+        A
+      </p>
+      <p v-else-if="type === 'B'">
+        B
+      </p>
+      <p v-else-if="type === 'C'">
+        C
+      </p>
+      <p v-else>
+        Not A/B/C
+      </p>
+    </div>
+
+    <div id="login">
+      <template v-if="loginType">
+        <label>Username</label>
+        <input placeholder="Enter your username" key="username-input">
+      </template>
+      <template v-else>
+        <label>Email</label>
+        <input placeholder="Enter your email address" key="email-input">
+      </template><br />
+      <button v-on:click="toggle">Toggle login type</button>
     </div>
         
     <script src="index.js"></script>

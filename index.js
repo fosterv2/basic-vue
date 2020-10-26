@@ -1,24 +1,38 @@
-var object = new Vue({
-  el: "#object",
+var iff = new Vue({
+  el: "#iff",
   data: {
-    activeColor: 'red',
-    fontSize: 30,
-    styleObject: {
-      color: 'red',
-      fontSize: '13px'
-    }
+    awesome: false
   }
 })
 
-var array = new Vue({
-  el: "#array",
+var template = new Vue({
+  el: "#template",
   data: {
-    styleObject: {
-      color: 'green',
-      fontSize: '23px'
-    },
-    baseStyles: {
-      backgroundColor: 'wheat'
+    ok: true
+  }
+})
+
+var els = new Vue({
+  el: "#else",
+  data: {
+    random: Math.random() > 0.5
+  }
+})
+
+var array = ["A", "B", "C", "D", "E"]
+var elsif = new Vue({
+  el: "#elsif",
+  data: {
+    type: array[Math.floor(Math.random() * array.length)]
+  }
+})
+
+var login = new Vue({
+  el: "#login",
+  data: {
+    loginType: true,
+    toggle: function () {
+      login.loginType = !login.loginType
     }
   }
 })

@@ -1,0 +1,19 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div id="object">
+      <p v-bind:style="{ color: activeColor, fontSize: fontSize + 'px' }">I have a style object</p>
+      <p v-bind:style="styleObject">I have a reference to a style object</p>
+    </div>
+
+    <div id="array" v-bind:style="[baseStyles, styleObject]">
+      <p>I have multiple style objects using an array</p>
+    </div>
+        
+    <script src="../js/inline.js"></script>
+  </body>
+</html>
