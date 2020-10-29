@@ -1,0 +1,48 @@
+<html>
+  <head>
+    <title>Vue.js Tutorial</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div id="filter">
+      <ul>
+        <li v-for="fruit in longFruit">{{ fruit }}</li>
+      </ul>
+      <ul v-for="set in sets">
+        <li v-for="n in even(set)">{{ n }}</li>
+      </ul>
+    </div>
+
+    <!-- Doesn't work -->
+    <!-- <div id="range">
+      <span v-for="n in 10">{{ n }} </span>
+    </div> -->
+
+    <div id="template">
+      <ul>
+        <template v-for="item in items">
+          <li>{{ item.msg }}</li>
+          <li class="divider" role="presentation"></li>
+        </template>
+      </ul>
+    </div>
+
+    <div id="if-for">
+      <ul>
+        <li v-for="todo in todos" v-if="!todo.isComplete">
+          {{ todo.td }}
+        </li>
+      </ul>
+      <ul v-if="todos.length">
+        <li v-for="todo in todos">
+          {{ todo.td }}
+        </li>
+      </ul>
+      <p v-else>No todos left!</p>
+    </div>
+        
+    <script src="../js/filter.js"></script>
+  </body>
+</html>

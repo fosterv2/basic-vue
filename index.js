@@ -1,43 +1,46 @@
-var filter = new Vue({
-  el: '#filter',
+var example1 = new Vue({
+  el: '#example-1',
   data: {
-    fruits: [ "Apple", "Orange", "Banana", "Peach", "Grapes" ],
-    sets: [[ 1, 2, 3, 4, 5 ], [6, 7, 8, 9, 10]]
+    counter: 0
+  }
+})
+
+var example2 = new Vue({
+  el: '#example-2',
+  data: {
+    name: 'Vue.js'
   },
+  // define methods under the `methods` object
   methods: {
-    even: function (numbers) {
-      return numbers.filter(function (number) {
-        return number % 2 === 0
-      })
-    }
-  },
-  computed: {
-    longFruit: function () {
-      return this.fruits.filter(function (fruit) {
-        return fruit.length > 5
-      })
+    greet: function (event) {
+      // `this` inside methods points to the Vue instance
+      alert('Hello ' + this.name + '!')
+      // `event` is the native DOM event
+      if (event) {
+        alert(event.target.tagName)
+      }
     }
   }
 })
 
-var template = new Vue({
-  el: '#template',
-  data: {
-    items: [
-      { msg: 'Foo' },
-      { msg: 'Bar' },
-      { msg: 'Baz' }
-    ]
+var example3 = new Vue({
+  el: '#example-3',
+  methods: {
+    say: function (message) {
+      alert(message)
+    }
   }
 })
 
-var iffor = new Vue({
-  el: '#if-for',
-  data: {
-    todos: [
-      { td: 'Wash dishes', isComplete: false },
-      { td: 'Do laundry', isComplete: true },
-      { td: 'Check email', isComplete: false }
-    ]
+var example4 = new Vue({
+  el: '#example-4',
+  methods: {
+    warn: function (message, event) {
+      // now we have access to the native event
+      if (event) {
+        event.preventDefault()
+      }
+      alert(message)
+    }
   }
 })
