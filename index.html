@@ -6,68 +6,46 @@
   </head>
   <body>
 
-    <div id="text">
-      <input v-model="message" placeholder="edit me">
-
-      <p>Message is: {{ message }}</p>
-      <span>Multiline message is:</span>
-      <p style="white-space: pre-line;">{{ textMessage }}</p>
-      <br>
-      <textarea v-model="textMessage" placeholder="add multiple lines"></textarea>
-    </div>
-
     <div id="checkbox">
-      <input type="checkbox" id="checkbox" v-model="checked">
-      <label for="checkbox">{{ checked }}</label>
-      <br><br>
-      
-      <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
-      <label for="jack">Jack</label>
-      <input type="checkbox" id="john" value="John" v-model="checkedNames">
-      <label for="john">John</label>
-      <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
-      <label for="mike">Mike</label>
-      <br>
-      <span>Checked names: {{ checkedNames }}</span>
+      <input
+        type="checkbox"
+        v-model="toggle"
+        true-value="yes"
+        false-value="no"
+      >
+      <label for="checkbox">Checked: {{ toggle }}</label>
     </div>
 
     <div id="radio">
-      <input type="radio" id="one" value="One" v-model="picked">
+      <input type="radio" id="one" v-model="pick" v-bind:value="a">
       <label for="one">One</label>
       <br>
-      <input type="radio" id="two" value="Two" v-model="picked">
+      <input type="radio" id="two" v-model="pick" v-bind:value="b">
       <label for="two">Two</label>
       <br>
-      <span>Picked: {{ picked }}</span>
+      <span>Picked: {{ pick }}</span>
     </div>
 
     <div id="select">
       <select v-model="selected">
+        <!-- inline object literal -->
         <option disabled value="">Please select one</option>
-        <option>A</option>
-        <option>B</option>
-        <option>C</option>
+        <option v-bind:value="{ number: 123 }">123</option>
+        <option v-bind:value="{ number: -321 }">-321</option>
       </select>
       <br>
       <span>Selected: {{ selected }}</span>
+    </div>
+
+    <div id="modifiers">
+      <input v-model.number="age" type="number">
+      <br>
+      <span>Age: { age }</span>
+      <!-- typeof modifiers.age === "number" -->
       <br><br>
 
-      <select v-model="multiSelected" multiple>
-        <option>A</option>
-        <option>B</option>
-        <option>C</option>
-      </select>
-      <br>
-      <span>Selected: {{ multiSelected }}</span>
-      <br><br>
-
-      <select v-model="select">
-        <option v-for="option in options" v-bind:value="option.value">
-          {{ option.text }}
-        </option>
-      </select>
-      <br>
-      <span>Selected: {{ select }}</span>
+      <!-- for getting rid of whitespace -->
+      <input v-model.trim="msg">
     </div>
 
     <script src="index.js"></script>

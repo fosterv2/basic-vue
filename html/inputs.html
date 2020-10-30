@@ -1,0 +1,75 @@
+<html>
+  <head>
+    <title>Vue.js Tutorial</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div id="text">
+      <input v-model="message" placeholder="edit me">
+
+      <p>Message is: {{ message }}</p>
+      <span>Multiline message is:</span>
+      <p style="white-space: pre-line;">{{ textMessage }}</p>
+      <br>
+      <textarea v-model="textMessage" placeholder="add multiple lines"></textarea>
+    </div>
+
+    <div id="checkbox">
+      <input type="checkbox" id="checkbox" v-model="checked">
+      <label for="checkbox">{{ checked }}</label>
+      <br><br>
+      
+      <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+      <label for="jack">Jack</label>
+      <input type="checkbox" id="john" value="John" v-model="checkedNames">
+      <label for="john">John</label>
+      <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+      <label for="mike">Mike</label>
+      <br>
+      <span>Checked names: {{ checkedNames }}</span>
+    </div>
+
+    <div id="radio">
+      <input type="radio" id="one" value="One" v-model="picked">
+      <label for="one">One</label>
+      <br>
+      <input type="radio" id="two" value="Two" v-model="picked">
+      <label for="two">Two</label>
+      <br>
+      <span>Picked: {{ picked }}</span>
+    </div>
+
+    <div id="select">
+      <select v-model="selected">
+        <option disabled value="">Please select one</option>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <br>
+      <span>Selected: {{ selected }}</span>
+      <br><br>
+
+      <select v-model="multiSelected" multiple>
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+      </select>
+      <br>
+      <span>Selected: {{ multiSelected }}</span>
+      <br><br>
+
+      <select v-model="select">
+        <option v-for="option in options" v-bind:value="option.value">
+          {{ option.text }}
+        </option>
+      </select>
+      <br>
+      <span>Selected: {{ select }}</span>
+    </div>
+
+    <script src="../js/inputs.js"></script>
+  </body>
+</html>

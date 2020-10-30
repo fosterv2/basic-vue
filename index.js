@@ -1,36 +1,31 @@
-var text = new Vue({
-  el: "#text",
-  data: {
-    message: "",
-    textMessage: ""
-  }
-})
-
 var checkbox = new Vue({
   el: "#checkbox",
   data: {
-    checked: false,
-    checkedNames: []
+    toggle: "no"
   }
 })
 
 var radio = new Vue({
   el: "#radio",
   data: {
-    picked: ""
+    picked: "",
+    pick: "",
+    a: "I am A",
+    b: "I am B"
   }
 })
 
 var select = new Vue({
   el: "#select",
   data: {
-    selected: "",
-    multiSelected: [],
-    select: 'A',
-    options: [
-      { text: 'One', value: 'A' },
-      { text: 'Two', value: 'B' },
-      { text: 'Three', value: 'C' }
-    ]
+    selected: ""
+  }
+})
+
+var modifiers = new Vue({
+  el: "#modifiers",
+  data: {
+    age: 0,
+    msg: ""
   }
 })
