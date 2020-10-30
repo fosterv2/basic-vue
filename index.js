@@ -1,35 +1,36 @@
-var modifiers = new Vue({
-  el: '#modifiers',
+var text = new Vue({
+  el: "#text",
   data: {
-    counter: 0
-  },
-  methods: {
-    warn: function (message) {
-      alert(message)
-    }
+    message: "",
+    textMessage: ""
   }
 })
 
-var keys = new Vue({
-  el: '#keys',
+var checkbox = new Vue({
+  el: "#checkbox",
   data: {
-    counter: 0
-  },
-  methods: {
-    add: function () {
-      this.counter++
-    },
-    subtract: function () {
-      this.counter--
-    }
+    checked: false,
+    checkedNames: []
   }
 })
 
-var exact = new Vue({
-  el: '#exact',
-  methods: {
-    onClick: function () {
-      console.log('Clicked!')
-    }
+var radio = new Vue({
+  el: "#radio",
+  data: {
+    picked: ""
+  }
+})
+
+var select = new Vue({
+  el: "#select",
+  data: {
+    selected: "",
+    multiSelected: [],
+    select: 'A',
+    options: [
+      { text: 'One', value: 'A' },
+      { text: 'Two', value: 'B' },
+      { text: 'Three', value: 'C' }
+    ]
   }
 })

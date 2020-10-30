@@ -1,0 +1,35 @@
+<html>
+  <head>
+    <title>Vue.js Tutorial</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div id="modifiers">
+      <button v-on:click.once="counter += 1">Add 1</button>
+      <p>Counter: {{ counter }}</p>
+      <form>
+        <button type="submit" v-on:click.prevent="warn('The page will not reload')">
+          Submit
+        </button>
+      </form>
+    </div>
+
+    <div id="keys">
+      <p>Counter: {{ counter }}</p>
+      <input v-on:keyup.right="add" v-on:keyup.left="subtract">
+    </div>
+
+    <div id="exact">
+      <!-- this will fire even if Alt or Option is also pressed -->
+      <button v-on:click.shift="onClick">A</button>
+      <!-- this will only fire when Shift and no other keys are pressed -->
+      <button v-on:click.shift.exact="onClick">A</button>
+      <!-- this will only fire when no system modifiers are pressed -->
+      <button v-on:click.exact="onClick">A</button>
+    </div>
+
+    <script src="../js/modifiers.js"></script>
+  </body>
+</html>
