@@ -1,29 +1,87 @@
-Vue.component('blog-post', {
-  inheritAttrs: false, // for style attributes from bootstrap
-  // props: {
-  //   title: String,
-  //   likes: Number,
-  //   isPublished: Boolean,
-  //   commentIds: Array,
-  //   author: Object
-  // },
-  props: ["post"],
+Vue.component('base-checkbox', {
+  model: {
+    prop: 'checked',
+    event: 'change'
+  },
+  props: {
+    checked: Boolean
+  },
   template: `
-    <div class="blog-post">
-      <h3>{{ post.title }}</h3>
-      <p>Author: {{ post.author.name }}, {{ post.author.company }}</p>
-      <p>Likes: {{ post.likes }}</p>
-    </div>
+    <input
+      type="checkbox"
+      v-bind:checked="checked"
+      v-on:change="$emit('change', $event.target.checked)"
+    >
   `
 })
 
-new Vue({
-  el: '#blog-posts',
+var checked = new Vue({
+  el: "#checked",
   data: {
-    posts: [
-      { id: 1, title: 'My journey with Vue', likes: 3, isPublished: true, author: { name: "Veronica Roth", company: "Divergent" } },
-      { id: 2, title: 'Blogging with Vue', likes: 3, isPublished: false, author: { name: "Kristin Cashore", company: "Graceling" } },
-      { id: 3, title: 'Why Vue is so fun', likes: 3, isPublished: true, author: { name: "Leigh Bardugo", company: "Grisha" } }
-    ],
+    lovingVue: true
   }
 })
+
+Vue.component('base-input', {
+  inheritAttrs: false,
+  props: ['label', 'value'],
+  computed: {
+    inputListeners: function () {
+      var vm = this
+      // `Object.assign` merges objects together to form a new object
+      return Object.assign({},
+        // We add all the listeners from the parent
+        this.$listeners,
+        // Then we can add custom listeners or override the
+        // behavior of some listeners.
+        {
+          // This ensures that the component works with v-model
+          input: function (event) {
+            vm.$emit('input', event.target.value)
+          }
+        }
+      )
+    }
+  },
+  template: `
+    <label>
+      {{ label }}
+      <input
+        v-bind="$attrs"
+        v-bind:value="value"
+        v-on="inputListeners"
+      >
+    </label>
+  `
+})
+
+var native = new Vue({
+  el: "#native",
+  data: {
+    onFocus: function () {
+      console.log("I'm reactive!")
+    }
+  }
+})
+
+// Vue.component('text-document', {
+//   props: ['doc'],
+//   template: `
+//     <div>
+//       <label>Title: </label>
+//       <input v-on:change="$emit('update:title', newTitle)">{{ doc.title }}</input>
+//       <label>Name: </label>
+//       <input v-on:change="$emit('update:name', newName)">{{ doc.name }}</input>
+//     </div>
+//   `
+// })
+
+// var sync = new Vue({
+//   el: "#sync",
+//   data: {
+//     doc: {
+//       title: "The Beginning",
+//       name: "Me"
+//     }
+//   }
+// })
