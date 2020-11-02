@@ -6,38 +6,12 @@
   </head>
   <body>
 
-    <div id="components-demo">
-      <button-counter></button-counter>
-      <button-counter></button-counter>
-    </div>
-
-    <!-- <div id="titles">
-      <blog-post title="My journey with Vue"></blog-post>
-      <blog-post title="Blogging with Vue"></blog-post>
-      <blog-post title="Why Vue is so fun"></blog-post>
-    </div> -->
-
-    <div id="blog-post-demo">
+    <div id="blog-posts">
       <blog-post
         v-for="post in posts"
         v-bind:key="post.id"
-        v-bind:title="post.title"
+        v-bind:post="post"
       ></blog-post>
-    </div>
-
-    <div id="blog-posts-events-demo">
-      <div :style="{ fontSize: postFontSize + 'em' }">
-        <blog-post-two
-          v-for="post in posts"
-          v-bind:key="post.id"
-          v-bind:post="post"
-          v-on:enlarge-text="postFontSize += 0.1"
-        ></blog-post-two>
-      </div>
-    </div>
-
-    <div id="events">
-      <custom-input v-model="searchText"></custom-input>
     </div>
 
     <script src="index.js"></script>
