@@ -1,0 +1,53 @@
+<html>
+  <head>
+    <title>Vue.js Tutorial</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div id="checkbox">
+      <input
+        type="checkbox"
+        v-model="toggle"
+        true-value="yes"
+        false-value="no"
+      >
+      <label for="checkbox">Checked: {{ toggle }}</label>
+    </div>
+
+    <div id="radio">
+      <input type="radio" id="one" v-model="pick" v-bind:value="a">
+      <label for="one">One</label>
+      <br>
+      <input type="radio" id="two" v-model="pick" v-bind:value="b">
+      <label for="two">Two</label>
+      <br>
+      <span>Picked: {{ pick }}</span>
+    </div>
+
+    <div id="select">
+      <select v-model="selected">
+        <!-- inline object literal -->
+        <option disabled value="">Please select one</option>
+        <option v-bind:value="{ number: 123 }">123</option>
+        <option v-bind:value="{ number: -321 }">-321</option>
+      </select>
+      <br>
+      <span>Selected: {{ selected }}</span>
+    </div>
+
+    <div id="modifiers">
+      <input v-model.number="age" type="number">
+      <br>
+      <span>Age: { age }</span>
+      <!-- typeof modifiers.age === "number" -->
+      <br><br>
+
+      <!-- for getting rid of whitespace -->
+      <input v-model.trim="msg">
+    </div>
+
+    <script src="../js/value.js"></script>
+  </body>
+</html>
