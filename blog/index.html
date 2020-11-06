@@ -1,0 +1,28 @@
+<html>
+  <head>
+    <title>Vue.js Tutorial</title>
+    <link rel="stylesheet" href="../index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div id="example">
+      <p>Count: {{ count }}</p>
+      <button v-on:click="add">Add</button>
+      <button v-on:click="subtract">Subtract</button>
+    </div>
+
+    <div id="computed">
+      <p>First Name: {{ firstName }}</p>
+      <p>Last Name: {{ lastName }}</p>
+      <p>FullName: {{ fullName }}</p>
+    </div>
+
+    <div id="date">
+      <h1>{{ date }}</h1>
+      <h1>{{ date.split(',')[0] }}</h1>
+    </div>
+
+    <script src="../blog/index.js"></script>
+  </body>
+</html>
