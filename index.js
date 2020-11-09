@@ -1,38 +1,42 @@
-Vue.component('navigation-link', {
-  props: ['url'],
+Vue.component('current-user', {
+  props: ['user'],
   template: `
-    <a
-      v-bind:href="url"
-      class="nav-link"
-    >
-      <slot></slot>
-    </a>
+    <span>
+      <slot v-bind:user="user">
+        {{ user.lastName }}
+      </slot>
+    </span>
   `
 })
 
-var slot1 = new Vue({
-  el: "#slot-1"
-})
-
-var slot2 = new Vue({
-  el: "#slot-2",
+var slotProps = new Vue({
+  el: "#slot-props",
   data: {
     user: {
-      name: "Jane Doe"
+      firstName: "Jane",
+      lastName: "Doe"
     }
   }
 })
 
-Vue.component('submit-button', {
-  template: `
-    <button type="submit">
-      <slot>Submit</slot>
-    </button>
-  `
+var abbr = new Vue({
+  el: "#abbr",
+  data: {
+    user: {
+      firstName: "Jane",
+      lastName: "Doe"
+    }
+  }
 })
 
-var fallback = new Vue({
-  el: "#fallback"
+var destructuring = new Vue({
+  el: "#destructuring",
+  data: {
+    user: {
+      firstName: "Jane",
+      lastName: "Doe"
+    }
+  }
 })
 
 Vue.component('base-layout', {
@@ -51,6 +55,33 @@ Vue.component('base-layout', {
   `
 })
 
-var names = new Vue({
-  el: "#names"
+var shorthand = new Vue({
+  el: "#shorthand"
+})
+
+Vue.component('todo-list', {
+  props: ['todos'],
+  template: `
+    <ul>
+      <li
+        v-for="todo in todos"
+        v-bind:key="todo.id"
+      >
+        <slot name="todo" v-bind:todo="todo">
+          {{ todo.text }}
+        </slot>
+      </li>
+    </ul>
+  `
+})
+
+var example = new Vue({
+  el: "#example",
+  data: {
+    todos: [
+        { text: 'Wash dishes', isComplete: false },
+        { text: 'Do laundry', isComplete: true },
+        { text: 'Check email', isComplete: false }
+      ]
+  }
 })

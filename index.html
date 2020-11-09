@@ -6,39 +6,58 @@
   </head>
   <body>
 
-    <div id="slot-1">
-      <navigation-link url="/profile">
-        <span class="fa fa-user"></span>
-        Your Profile
-      </navigation-link>
+    <div id="slot-props">
+      <current-user v-bind:user="user"></current-user><br>
+      <current-user v-bind:user="user">
+        <template v-slot:default="slotProps">
+          {{ slotProps.user.firstName }}
+        </template>
+      </current-user>
     </div>
 
-    <div id="slot-2">
-      <navigation-link url="/profile">
-        Logged in as {{ user.name }}
-        <!-- Doesn't work, won't find 'url' -->
-        <!-- Clicking here will send you to: {{ url }} -->
-      </navigation-link>
+    <div id="abbr">
+      <current-user
+        v-bind:user="user"
+        v-slot="slotProps"
+      >
+        {{ slotProps.user.firstName }}
+      </current-user>
     </div>
 
-    <div id="fallback">
-      <submit-button></submit-button><br>
-      <submit-button>Save</submit-button>
+    <div id="destructuring">
+      <current-user v-bind:user="user" v-slot="{ user }">
+        {{ user.firstName }}
+      </current-user><br>
+      <current-user v-bind:user="user" v-slot="{ user: person }">
+        {{ person.firstName }}
+      </current-user><br>
+      <!-- <current-user v-slot="{ user = { firstName: 'Guest', lastName: 'Guest' } }">
+        {{ user.firstName }}
+      </current-user> -->
     </div>
 
-    <div id="names">
+    <div id="shorthand">
       <base-layout>
-        <template v-slot:header>
+        <template #header>
           <h1>Here might be a page title</h1>
         </template>
 
         <p>A paragraph for the main content.</p>
         <p>And another one.</p>
 
-        <template v-slot:footer>
+        <template #footer>
           <p>Here's some contact info</p>
         </template>
       </base-layout>
+    </div>
+
+    <div id="example">
+      <todo-list v-bind:todos="todos">
+        <template v-slot:todo="{ todo }">
+          <span v-if="todo.isComplete">✓</span>
+          {{ todo.text }}
+        </template>
+      </todo-list>
     </div>
 
     <script src="index.js"></script>
