@@ -6,58 +6,19 @@
   </head>
   <body>
 
-    <div id="slot-props">
-      <current-user v-bind:user="user"></current-user><br>
-      <current-user v-bind:user="user">
-        <template v-slot:default="slotProps">
-          {{ slotProps.user.firstName }}
-        </template>
-      </current-user>
-    </div>
-
-    <div id="abbr">
-      <current-user
-        v-bind:user="user"
-        v-slot="slotProps"
+    <div id="dynamic-component-demo">
+      <button
+        v-for="tab in tabs"
+        v-bind:key="tab"
+        v-bind:class="['tab-button', { active: currentTab === tab }]"
+        v-on:click="currentTab = tab"
       >
-        {{ slotProps.user.firstName }}
-      </current-user>
-    </div>
+        {{ tab }}
+      </button>
 
-    <div id="destructuring">
-      <current-user v-bind:user="user" v-slot="{ user }">
-        {{ user.firstName }}
-      </current-user><br>
-      <current-user v-bind:user="user" v-slot="{ user: person }">
-        {{ person.firstName }}
-      </current-user><br>
-      <!-- <current-user v-slot="{ user = { firstName: 'Guest', lastName: 'Guest' } }">
-        {{ user.firstName }}
-      </current-user> -->
-    </div>
-
-    <div id="shorthand">
-      <base-layout>
-        <template #header>
-          <h1>Here might be a page title</h1>
-        </template>
-
-        <p>A paragraph for the main content.</p>
-        <p>And another one.</p>
-
-        <template #footer>
-          <p>Here's some contact info</p>
-        </template>
-      </base-layout>
-    </div>
-
-    <div id="example">
-      <todo-list v-bind:todos="todos">
-        <template v-slot:todo="{ todo }">
-          <span v-if="todo.isComplete">✓</span>
-          {{ todo.text }}
-        </template>
-      </todo-list>
+      <keep-alive>
+        <component v-bind:is="currentTabComponent" class="tab"></component>
+      </keep-alive>
     </div>
 
     <script src="index.js"></script>
