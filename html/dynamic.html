@@ -1,0 +1,26 @@
+<html>
+  <head>
+    <title>Vue.js Tutorial</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+
+    <div id="dynamic-component-demo">
+      <button
+        v-for="tab in tabs"
+        v-bind:key="tab"
+        v-bind:class="['tab-button', { active: currentTab === tab }]"
+        v-on:click="currentTab = tab"
+      >
+        {{ tab }}
+      </button>
+
+      <keep-alive>
+        <component v-bind:is="currentTabComponent" class="tab"></component>
+      </keep-alive>
+    </div>
+
+    <script src="../js/dynamic.js"></script>
+  </body>
+</html>
