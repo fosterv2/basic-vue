@@ -44,3 +44,24 @@ new Vue({
     date: new Date().toLocaleString()
   }
 })
+
+new Vue({
+  el: "#for-directive",
+  data: {
+    todos: [
+      { text: 'Wash dishes', isComplete: false },
+      { text: 'Do laundry', isComplete: true },
+      { text: 'Check email', isComplete: false }
+    ]
+  }
+})
+
+new Vue({
+  el: "#gender",
+  data: {
+    person: {
+      name: "Jane Doe",
+      gender: "F"
+    }
+  }
+})

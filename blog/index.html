@@ -23,6 +23,29 @@
       <h1>{{ date.split(',')[0] }}</h1>
     </div>
 
+    <div>
+      <ul id="for-directive">
+        <li v-for="todo in todos">
+          {{ todo.text }}
+        </li>
+      </ul>
+    </div>
+
+    <div id="gender">
+      <p v-if="person.gender === 'M'">
+        Male
+      </p>
+      <p v-else-if="person.gender === 'F'">
+        Female
+      </p>
+      <p v-else>
+        Other
+      </p>
+    </div>
+
+    <!-- Will give the class names of whatever is in 
+      the 'activeClass' and 'errorClass' variables -->
+
     <script src="../blog/index.js"></script>
   </body>
 </html>
