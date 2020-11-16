@@ -6,25 +6,62 @@
   </head>
   <body>
 
-    <div id="todo-list-example">
-      <form v-on:submit.prevent="addNewTodo">
-        <label for="new-todo">Add a todo</label>
-        <input
-          v-model="newTodoText"
-          id="new-todo"
-          placeholder="E.g. Feed the cat"
-        >
-        <button>Add</button>
-      </form>
-      <ul>
-        <li
-          is="todo-item"
-          v-for="(todo, index) in todos"
-          v-bind:key="todo.id"
-          v-bind:title="todo.title"
-          v-on:remove="todos.splice(index, 1)"
-        ></li>
-      </ul>
+    <div id="demo">
+      <button v-on:click="show = !show">
+        Toggle
+      </button>
+      <transition name="fade">
+        <p v-if="show">hello</p>
+      </transition>
+    </div>
+
+    <div id="example-1">
+      <button @click="show = !show">
+        Toggle render
+      </button>
+      <transition name="slide-fade">
+        <p v-if="show">hello</p>
+      </transition>
+    </div>
+
+    <div id="example-2">
+      <button @click="show = !show">Toggle show</button>
+      <transition name="bounce">
+        <p v-if="show">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris facilisis enim libero, at lacinia diam fermentum id. Pellentesque habitant morbi tristique senectus et netus.</p>
+      </transition>
+    </div>
+
+    <link href="https://cdn.jsdelivr.net/npm/animate.css@3.5.1" rel="stylesheet" type="text/css">
+
+    <div id="example-3">
+      <button @click="show = !show">
+        Toggle render
+      </button>
+      <transition
+        name="custom-classes-transition"
+        enter-active-class="animated tada"
+        leave-active-class="animated bounceOutRight"
+      >
+        <p v-if="show">hello</p>
+      </transition>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+
+    <div id="example-4">
+      <button @click="show = !show">
+        Toggle
+      </button>
+      <transition
+        v-on:before-enter="beforeEnter"
+        v-on:enter="enter"
+        v-on:leave="leave"
+        v-bind:css="false"
+      >
+        <p v-if="show">
+          Demo
+        </p>
+      </transition>
     </div>
 
     <script src="index.js"></script>

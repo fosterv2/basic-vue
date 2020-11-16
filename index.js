@@ -1,40 +1,54 @@
-Vue.component('todo-item', {
-  template: '\
-    <li>\
-      {{ title }}\
-      <button v-on:click="$emit(\'remove\')">Remove</button>\
-    </li>\
-  ',
-  props: ['title']
+new Vue({
+  el: '#demo',
+  data: {
+    show: true
+  }
 })
 
 new Vue({
-  el: '#todo-list-example',
+  el: '#example-1',
   data: {
-    newTodoText: '',
-    todos: [
-      {
-        id: 1,
-        title: 'Do the dishes',
-      },
-      {
-        id: 2,
-        title: 'Take out the trash',
-      },
-      {
-        id: 3,
-        title: 'Mow the lawn'
-      }
-    ],
-    nextTodoId: 4
+    show: true
+  }
+})
+
+new Vue({
+  el: '#example-2',
+  data: {
+    show: true
+  }
+})
+
+new Vue({
+  el: '#example-3',
+  data: {
+    show: true
+  }
+})
+
+new Vue({
+  el: '#example-4',
+  data: {
+    show: false
   },
   methods: {
-    addNewTodo: function () {
-      this.todos.push({
-        id: this.nextTodoId++,
-        title: this.newTodoText
-      })
-      this.newTodoText = ''
+    beforeEnter: function (el) {
+      el.style.opacity = 0
+      el.style.transformOrigin = 'left'
+    },
+    enter: function (el, done) {
+      Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
+      Velocity(el, { fontSize: '1em' }, { complete: done })
+    },
+    leave: function (el, done) {
+      Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 600 })
+      Velocity(el, { rotateZ: '100deg' }, { loop: 2 })
+      Velocity(el, {
+        rotateZ: '45deg',
+        translateY: '30px',
+        translateX: '30px',
+        opacity: 0
+      }, { complete: done })
     }
   }
 })
