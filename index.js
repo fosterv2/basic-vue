@@ -1,54 +1,37 @@
-new Vue({
+let demo = new Vue({
   el: '#demo',
   data: {
-    show: true
-  }
-})
-
-new Vue({
-  el: '#example-1',
-  data: {
-    show: true
-  }
-})
-
-new Vue({
-  el: '#example-2',
-  data: {
-    show: true
-  }
-})
-
-new Vue({
-  el: '#example-3',
-  data: {
-    show: true
-  }
-})
-
-new Vue({
-  el: '#example-4',
-  data: {
-    show: false
+    docState: 'saved'
   },
-  methods: {
-    beforeEnter: function (el) {
-      el.style.opacity = 0
-      el.style.transformOrigin = 'left'
+  computed: {
+    buttonMessage: function () {
+      switch (this.docState) {
+        case 'saved': return 'Edit'
+        case 'edited': return 'Save'
+        case 'editing': return 'Cancel'
+      }
+    }
+  }
+})
+
+new Vue({
+  el: '#mode',
+  data: {
+    mode: false
+  }
+})
+
+let components = new Vue({
+  el: '#transition-components-demo',
+  data: {
+    view: 'v-a'
+  },
+  components: {
+    'v-a': {
+      template: '<div>Component A</div>'
     },
-    enter: function (el, done) {
-      Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
-      Velocity(el, { fontSize: '1em' }, { complete: done })
-    },
-    leave: function (el, done) {
-      Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 600 })
-      Velocity(el, { rotateZ: '100deg' }, { loop: 2 })
-      Velocity(el, {
-        rotateZ: '45deg',
-        translateY: '30px',
-        translateX: '30px',
-        opacity: 0
-      }, { complete: done })
+    'v-b': {
+      template: '<div>Component B</div>'
     }
   }
 })

@@ -8,7 +8,6 @@ var checkbox = new Vue({
 var radio = new Vue({
   el: "#radio",
   data: {
-    picked: "",
     pick: "",
     a: "I am A",
     b: "I am B"
