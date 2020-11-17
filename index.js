@@ -1,37 +1,52 @@
-let demo = new Vue({
-  el: '#demo',
+new Vue({
+  el: '#list-demo',
   data: {
-    docState: 'saved'
+    items: [1,2,3,4,5,6,7,8,9],
+    nextNum: 10
   },
-  computed: {
-    buttonMessage: function () {
-      switch (this.docState) {
-        case 'saved': return 'Edit'
-        case 'edited': return 'Save'
-        case 'editing': return 'Cancel'
-      }
+  methods: {
+    randomIndex: function () {
+      return Math.floor(Math.random() * this.items.length)
+    },
+    add: function () {
+      this.items.splice(this.randomIndex(), 0, this.nextNum++)
+    },
+    remove: function () {
+      this.items.splice(this.randomIndex(), 1)
+    },
+  }
+})
+
+new Vue({
+  el: '#flip-list-demo',
+  data: {
+    items: [1,2,3,4,5,6,7,8,9]
+  },
+  methods: {
+    shuffle: function () {
+      this.items = _.shuffle(this.items)
     }
   }
 })
 
 new Vue({
-  el: '#mode',
+  el: '#list-complete-demo',
   data: {
-    mode: false
-  }
-})
-
-let components = new Vue({
-  el: '#transition-components-demo',
-  data: {
-    view: 'v-a'
+    items: [1,2,3,4,5,6,7,8,9],
+    nextNum: 10
   },
-  components: {
-    'v-a': {
-      template: '<div>Component A</div>'
+  methods: {
+    randomIndex: function () {
+      return Math.floor(Math.random() * this.items.length)
     },
-    'v-b': {
-      template: '<div>Component B</div>'
+    add: function () {
+      this.items.splice(this.randomIndex(), 0, this.nextNum++)
+    },
+    remove: function () {
+      this.items.splice(this.randomIndex(), 1)
+    },
+    shuffle: function () {
+      this.items = _.shuffle(this.items)
     }
   }
 })
