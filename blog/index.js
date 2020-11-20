@@ -65,3 +65,50 @@ new Vue({
     }
   }
 })
+
+new Vue({
+  el: '#toggle',
+  data: {
+    condition: true
+  }
+})
+
+let message = new Vue({
+  el: "#message",
+  data: {
+    message: "I'm a message"
+  },
+  methods: {
+    func: function () {
+      alert(this.message)
+    }
+  }
+})
+
+let model = new Vue({
+  el: "#model",
+  data: {
+    message: null
+  }
+})
+
+let hill = new Vue({
+  el: "#hill",
+  data: {
+    picked: ""
+  }
+})
+
+let color = new Vue({
+  el: "#color",
+  data: {
+    colors: []
+  }
+})
+
+let letter = new Vue({
+  el: "#letter",
+  data: {
+    selected: ""
+  }
+})

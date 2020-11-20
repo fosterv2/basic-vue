@@ -43,8 +43,48 @@
       </p>
     </div>
 
-    <!-- Will give the class names of whatever is in 
-      the 'activeClass' and 'errorClass' variables -->
+    <div id="toggle">
+      <button v-on:click="condition = !condition">Click Me!</button>
+      <p v-if="condition">Click the Button to toggle me in and out</p>
+    </div>
+
+    <div id="message">
+      <button v-on:click.once="func">Click Me!</button>
+    </div>
+
+    <div id="model">
+      <input v-model="message" placeholder="Type something...">
+      <p>You typed: {{ message }}</p>
+    </div>
+
+    <div id="hill">
+      <input type="radio" id="jack" value="Jack" v-model="picked">
+      <label for="jack">Jack</label>
+      <br>
+      <input type="radio" id="jill" value="Jill" v-model="picked">
+      <label for="jill">Jill</label>
+      <p>Picked: {{ picked }}</p>
+    </div>
+
+    <div id="color">
+      <input type="checkbox" id="red" value="Red" v-model="colors">
+      <label for="red">Red</label>
+      <input type="checkbox" id="yellow" value="Yellow" v-model="colors">
+      <label for="yellow">Yellow</label>
+      <input type="checkbox" id="blue" value="Blue" v-model="colors">
+      <label for="blue">Blue</label>
+      <p>Checked colors: {{ colors }}</p>
+    </div>
+
+    <div id="letter">
+      <select v-model="selected">
+        <option disabled value="">Please pick one</option>
+        <option>Lion</option>
+        <option>Tiger</option>
+        <option>Bear</option>
+      </select>
+      <p>You picked: {{ selected }}</p>
+    </div>
 
     <script src="../blog/index.js"></script>
   </body>
