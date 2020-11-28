@@ -112,3 +112,52 @@ let letter = new Vue({
     selected: ""
   }
 })
+
+Vue.component('counter-component', {
+  data: function () {
+    return {
+      count: 0
+    }
+  },
+  template: `<div>
+    <button v-on:click="count++">Click me!</button>
+    <p>You've clicked the button {{ count }} times</p>
+  </div>`
+})
+
+new Vue({
+  el: '#component-example'
+})
+
+Vue.component('profile', {
+  props: ['person'],
+  template: `<div>
+    <h3>{{ person.name }}</h3>
+    <img v-bind:src='person.img_url'></p>
+    <p>{{ person.email }}</p>
+  </div>`
+})
+
+new Vue({
+  el: '#people-list',
+  data: {
+    people: [
+      { id: 1, name: 'Jane Do', img_url: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', email: 'jane.doe@google.com'},
+      { id: 2, name: 'John Smith', img_url: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', email: 'jsmith@google.com'},
+      { id: 3, name: 'Jesse Baker', img_url: 'https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png', email: 'jesse@google.com'}
+    ]
+  }
+})
+
+Vue.component('navigation-link', {
+  props: ['url'],
+  template: `
+    <a v-bind:href="url">
+      <slot></slot>
+    </a>
+  `
+})
+
+new Vue({
+  el: '#profile-nav'
+})
