@@ -90,5 +90,3 @@ new Vue({
     }
   }
 })
-
-// hello, I'm a conflicting change
